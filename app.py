@@ -1,3 +1,5 @@
+import csv
+
 class Libro:
     def __init__(self, titulo, autor, genero, puntuacion):
         self.titulo = titulo
@@ -7,27 +9,41 @@ class Libro:
 
 lista_libros=[]
 
-libro1 = Libro("Cien años de soledad", "Gabriel García Márquez", "Ficción", 4.5)
-libro2 = Libro("1984", "George Orwell", "Ciencia Ficción", 4.3)
-libro3 = Libro("El Hobbit", "J.R.R. Tolkien", "Fantasía", 4.7)
-libro4 = Libro("Orgullo y Prejuicio", "Jane Austen", "Romance", 4.2)
-libro5 = Libro("Crimen y Castigo", "Fiódor Dostoyevski", "Clásico", 4.4)
-libro6 = Libro("Los Juegos del Hambre", "Suzanne Collins", "Juvenil", 4.1)
-libro7 = Libro("Don Quijote de la Mancha", "Miguel de Cervantes", "Clásico", 4.6)
-libro8 = Libro("Harry Potter y la Piedra Filosofal", "J.K. Rowling", "Fantasía", 4.8)
-libro9 = Libro("Los Pilares de la Tierra", "Ken Follett", "Histórica", 4.4)
-libro10 = Libro("Cazadores de Sombras: Ciudad de Hueso", "Cassandra Clare", "Fantasía", 4.0)
 
-lista_libros.append(libro1)
-lista_libros.append(libro2)
-lista_libros.append(libro3) 
-lista_libros.append(libro4)
-lista_libros.append(libro5)
-lista_libros.append(libro6)
-lista_libros.append(libro7)
-lista_libros.append(libro8)
-lista_libros.append(libro9)
-lista_libros.append(libro10)
+with open("libros.csv", "r") as archivo:
+    lector = csv.DictReader(archivo)
+    for fila in lector:
+        print(fila)
+        nuevo_libro= Libro(
+            fila["titulo"],
+            fila["autor"],
+            fila["genero"],
+            fila["puntuacion"]
+        )
+        lista_libros.append(nuevo_libro)
+    
+
+#libro1 = Libro("Cien años de soledad", "Gabriel García Márquez", "Ficción", 4.5)
+#libro2 = Libro("1984", "George Orwell", "Ciencia Ficción", 4.3)
+#libro3 = Libro("El Hobbit", "J.R.R. Tolkien", "Fantasía", 4.7)
+#libro4 = Libro("Orgullo y Prejuicio", "Jane Austen", "Romance", 4.2)
+#libro5 = Libro("Crimen y Castigo", "Fiódor Dostoyevski", "Clásico", 4.4)
+#libro6 = Libro("Los Juegos del Hambre", "Suzanne Collins", "Juvenil", 4.1)
+#libro7 = Libro("Don Quijote de la Mancha", "Miguel de Cervantes", "Clásico", 4.6)
+#libro8 = Libro("Harry Potter y la Piedra Filosofal", "J.K. Rowling", "Fantasía", 4.8)
+#libro9 = Libro("Los Pilares de la Tierra", "Ken Follett", "Histórica", 4.4)
+#libro10 = Libro("Cazadores de Sombras: Ciudad de Hueso", "Cassandra Clare", "Fantasía", 4.0)
+
+#lista_libros.append(libro1)
+#lista_libros.append(libro2)
+#lista_libros.append(libro3) 
+#lista_libros.append(libro4)
+#lista_libros.append(libro5)
+#lista_libros.append(libro6)
+#lista_libros.append(libro7)
+#lista_libros.append(libro8)
+#lista_libros.append(libro9)
+#lista_libros.append(libro10)
 
 salir= False
 
